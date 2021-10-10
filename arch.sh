@@ -3,15 +3,18 @@
 loadkeys ru
 setfont cyr-sun16
 
+    echo '(П.10 стр.45) Выбор ядра и основных пакетов'
 DEFAULT="base base-devel linux linux-headers linux-firmware nano netctl dhcpcd"
 ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
 LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
 
+    echo 'Выбор места установки разделов (LOCATION)'
  ROOT_LOCATION=/mnt
  BOOT_LOCATION=/mnt/boot/efi
  DATA_LOCATION=/mnt/data
 DATA2_LOCATION=/mnt/data2
 
+    echo 'Выбор разделов'
  BOOT_PARTITION=/dev/sda1
  SWAP_PARTITION=/dev/nvme0n1p6
  ROOT_PARTITION=/dev/sda2
@@ -38,7 +41,7 @@ swapon $SWAP_PARTITION
 cp /1/arch2.sh /mnt/arch2.sh
     echo '09. Установка зеркал'
 pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
-    echo '10. Установка основных пакетов'
+    echo '10. Установка ядра и основных пакетов'
 pacstrap /mnt $DEFAULT
     echo '11. Генерируем fstab'
 genfstab -U /mnt >> /mnt/etc/fstab
