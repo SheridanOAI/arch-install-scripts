@@ -32,7 +32,7 @@ DATA2_LOCATION=/mnt/data2
  DATA_PARTITION=/dev/sda5
 DATA2_PARTITION=/dev/nvme0n1p5
 
-    Сдесь я делаю выбор с каким ядром подключится
+    Здесь я делаю выбор с каким ядром подключится
 DEFAULT=
 ZEN=
 LTS=
