@@ -12,7 +12,7 @@ AMD_ATI="xorg-server xorg-drivers"
 
     echo '(П.22 стр.37) Выбор установки рабочего стола ($DE_PLASMA,$DE_CINNAMON,$DE_GNOME,$DE_XFCE,$DE_MATE'
 DE_PLASMA="plasma"
-DE_CINNAMON="cinnamon"
+DE_CINNAMON="cinnamon cinnamon-translations"
 DE_GNOME="gnome gnome-extra"
 DE_XFCE="xfce4 xfce4-goodies"
 DE_MATE="mate mate-extra"
@@ -32,7 +32,7 @@ echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
     echo '20. Обновляем базу PACMAN'
 pacman -Sy
     echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
-pacman -S $NVIDIA_DEFAULT
+pacman -S $NV_DEFAULT
     echo '22. Устанавливаем рабочий стол (DE)'
 pacman -S $DE_PLASMA
     echo '23. Создаем root пароль'
