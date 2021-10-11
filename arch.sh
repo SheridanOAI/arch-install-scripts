@@ -4,7 +4,7 @@ loadkeys ru
 setfont cyr-sun16
 
     echo '(П.10 стр.45) Выбор ядра и основных пакетов'
-DEFAULT="base base-devel linux linux-headers linux-firmware nano netctl dhcpcd"
+DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
 ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
 LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
 
@@ -48,7 +48,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
     echo '12. Имя компьютера'
 echo "archlinux" >> /mnt/etc/hostname
     echo '13. Добавляем multilib'
-sed -i 's/#[multilib]/[multilib]/' /mnt/etc/pacman.conf
-sed -i 's/#Include = /etc/pacman.d/mirrorlist/Include = /etc/pacman.d/mirrorlist/' /mnt/etc/pacman.conf
+echo "[multilib]" >> /mnt/etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist/" >> /mnt/etc/pacman.conf
     echo '14. Переход в новое окружение'
 arch-chroot /mnt sh /arch2.sh
