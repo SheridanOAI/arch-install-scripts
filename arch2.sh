@@ -1,4 +1,4 @@
- #!/bin/sh
+ #!/bin/bash
 
 PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru yakuake packagekit-qt5 gwenview flameshot kate dolphin audacious pavucontrol-qt gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
 
