@@ -1,4 +1,4 @@
- #!/bin/sh
+ #!/bin/bash
 
 loadkeys ru
 setfont cyr-sun16
@@ -51,4 +51,4 @@ echo "archlinux" >> /mnt/etc/hostname
 echo "[multilib]" >> /mnt/etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist/" >> /mnt/etc/pacman.conf
     echo '14. Переход в новое окружение'
-arch-chroot /mnt sh /arch2.sh
+arch-chroot /mnt /bin/bash /arch2.sh
