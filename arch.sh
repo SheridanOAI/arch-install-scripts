@@ -40,7 +40,7 @@ swapon $SWAP_PARTITION
     echo '08. Копирование скрипта arch2.sh'
 cp /1/arch2.sh /mnt/arch2.sh
     echo '09. Установка зеркал'
-pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
+#pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
     echo '10. Установка ядра и основных пакетов'
 pacstrap /mnt $DEFAULT
     echo '11. Генерируем fstab'
