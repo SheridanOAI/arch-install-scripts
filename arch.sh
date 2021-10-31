@@ -3,7 +3,7 @@
 loadkeys ru
 setfont cyr-sun16
 
-    echo '(П.10 стр.45) Выбор ядра и основных пакетов'
+    echo '(П.10 стр.48) Выбор ядра и основных пакетов'
 DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
 ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
 LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
@@ -20,6 +20,9 @@ DATA2_LOCATION=/mnt/data2
  ROOT_PARTITION=/dev/sda2
  DATA_PARTITION=/dev/sda5
 DATA2_PARTITION=/dev/nvme0n1p5
+
+    echo 'Имя компьютера'
+HOSTNAME=archlinux
 
     echo '01. Форматирование корневого раздела'
 mkfs.ext4 $ROOT_PARTITION -L Arch
@@ -46,7 +49,7 @@ pacstrap /mnt $DEFAULT
     echo '11. Генерируем fstab'
 genfstab -U /mnt >> /mnt/etc/fstab
     echo '12. Имя компьютера'
-echo "archlinux" >> /mnt/etc/hostname
+echo "$HOSTNAME" >> /mnt/etc/hostname
     echo '13. Добавляем multilib'
 echo "[multilib]" >> /mnt/etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist/" >> /mnt/etc/pacman.conf
