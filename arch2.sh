@@ -2,28 +2,26 @@
 
 PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
 
-    echo '(П.21 стр.46) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
+    echo '(П.21 стр.47) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
 NV_DEFAULT="nvidia nvidia-settings"
 NV_ZEN="nvidia-dkms nvidia-settings"
 NV_LTS="nvidia-lts nvidia-settings"
-
-    echo '(П.21 стр.46) Установка AMD_ATI drivers'
 AMD_ATI="xorg-server xorg-drivers"
 
-    echo '(П.22 стр.48) Выбор установки рабочего стола PLASMA,CINNAMON,GNOME,XFCE,MATE'
+    echo '(П.22 стр.49) Выбор установки рабочего стола PLASMA,CINNAMON,GNOME,XFCE,MATE'
 DE_PLASMA="plasma dolphin pavucontrol-qt packagekit-qt5"
 DE_CINNAMON="cinnamon cinnamon-translations networkmanager lightdm"
 DE_GNOME="gnome gnome-extra networkmanager pavucontrol"
 DE_XFCE="xfce4 xfce4-goodies networkmanager lightdm"
 DE_MATE="mate mate-extra networkmanager lightdm"
 
-    echo '(П.24 стр.55) Имя пользователя'
+    echo '(П.24 стр.53) Имя пользователя'
 USERNAME=sheridan
 
-    echo '(П.25 стр.57) Пароль пользователя'
+    echo '(П.25 стр.55) Пароль пользователя'
 USERPASS=sheridan
 
-    echo '(П.27 стр.61) Выбор экранного менеджера SDDM GDM lightdm'
+    echo '(П.27 стр.59) Выбор экранного менеджера SDDM GDM lightdm'
 SDDM=systemctl enable sddm
 GDM=systemctl enable gdm
 LIGHTDM=systemctl enable lightdm
