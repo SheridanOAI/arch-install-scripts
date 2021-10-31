@@ -1,6 +1,6 @@
  #!/bin/bash
 
-PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru yakuake packagekit-qt5 gwenview flameshot kate dolphin audacious pavucontrol-qt gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
+PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru packagekit-qt5 gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
 
     echo '(П.21 стр.35) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
 NV_DEFAULT="nvidia nvidia-settings"
@@ -10,12 +10,16 @@ NV_LTS="nvidia-lts nvidia-settings"
     echo '(П.21 стр.35) Установка AMD_ATI drivers'
 AMD_ATI="xorg-server xorg-drivers"
 
-    echo '(П.22 стр.37) Выбор установки рабочего стола ($DE_PLASMA,$DE_CINNAMON,$DE_GNOME,$DE_XFCE,$DE_MATE'
-DE_PLASMA="plasma"
+    echo '(П.22 стр.37) Выбор установки рабочего стола PLASMA,CINNAMON,GNOME,XFCE,MATE'
+DE_PLASMA="plasma dolphin pavucontrol-qt"
 DE_CINNAMON="cinnamon cinnamon-translations"
-DE_GNOME="gnome gnome-extra"
+DE_GNOME="gnome gnome-extra networkmanager pavucontrol"
 DE_XFCE="xfce4 xfce4-goodies"
 DE_MATE="mate mate-extra"
+
+    echo '(П.27 стр.51) Выбор экранного менеджера SDDM GDM'
+SDDM=systemctl enable sddm
+ GDM=systemctl enable gdm
 
     echo '15. Выставляем регион'
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -43,8 +47,8 @@ useradd -m -G users,wheel,audio,video -s /bin/bash sheridan
 passwd sheridan
     echo '26. Раскоментируем sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-    echo '27. Подключаем daemon SDDM'
-systemctl enable sddm
+    echo '27. Подключаем daemon SDDM или GDM'
+$SDDM
     echo '28. Подключаем daemon NetworkManager'
 systemctl enable NetworkManager
     echo '29 Устанавливаем grub'
