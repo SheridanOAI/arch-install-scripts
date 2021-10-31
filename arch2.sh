@@ -17,16 +17,19 @@ DE_GNOME="gnome gnome-extra networkmanager pavucontrol"
 DE_XFCE="xfce4 xfce4-goodies networkmanager lightdm"
 DE_MATE="mate mate-extra networkmanager lightdm"
 
-    echo '(П.24 стр.52) Имя пользователя'
+    echo '(П.24 стр.55) Имя пользователя'
 USERNAME=sheridan
 
-    echo '(П.25 стр.54) Пароль пользователя'
+    echo '(П.25 стр.57) Пароль пользователя'
 USERPASS=sheridan
 
-    echo '(П.27 стр.58) Выбор экранного менеджера SDDM GDM lightdm'
+    echo '(П.27 стр.61) Выбор экранного менеджера SDDM GDM lightdm'
 SDDM=systemctl enable sddm
 GDM=systemctl enable gdm
 LIGHTDM=systemctl enable lightdm
+
+    echo 'Место (ДИСК) установки GRUB'
+DISK=/dev/sda
 
     echo '15. Выставляем регион'
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -60,7 +63,7 @@ $SDDM
 systemctl enable NetworkManager
     echo '29 Устанавливаем grub'
 pacman -S grub os-prober efibootmgr
-grub-install /dev/sda
+grub-install $DISK
     echo '30. Подключение os-prober'
 echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
     echo '31. Обновляем grub'
