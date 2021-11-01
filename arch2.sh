@@ -8,18 +8,18 @@ NV_ZEN="nvidia-dkms nvidia-settings"
 NV_LTS="nvidia-lts nvidia-settings"
 AMD_ATI="xorg-server xorg-drivers"
 
-    echo '(П.22 стр.49) Выбор установки рабочего стола PLASMA,CINNAMON,GNOME,XFCE,MATE'
-DE_PLASMA="plasma dolphin pavucontrol-qt packagekit-qt5"
-DE_CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pavucontrol"
-DE_GNOME="gnome gnome-extra networkmanager pavucontrol"
-DE_XFCE="xfce4 xfce4-goodies networkmanager lxdm pavucontrol"
-DE_MATE="mate mate-extra network-manager-applet networkmanager mate-media lxdm pavucontrol"
+    echo '(П.22 стр.49) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE'
+PLASMA="plasma dolphin pavucontrol-qt"
+CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
+GNOME="gnome gnome-extra networkmanager pavucontrol"
+XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio pavucontrol"
+MATE="mate mate-extra network-manager-applet networkmanager mate-media lxdm pulseaudio pavucontrol"
 
-    echo '(П.24 стр.53) Имя пользователя'
-USERNAME=sheridan
+    echo '(П.24 стр.53) Вводим имя пользователя'
+USERNAME=username
 
-    echo '(П.25 стр.55) Пароль пользователя'
-USERPASS=sheridan
+    echo '(П.25 стр.55) Вводим такое же имя пользователя для пароля'
+USERPASS=username
 
     echo '(П.27 стр.59) Выбор экранного менеджера SDDM GDM LXDM'
 SDDM=sddm
@@ -46,7 +46,7 @@ pacman -Sy
     echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
 pacman -S $NV_DEFAULT
     echo '22. Устанавливаем рабочий стол (DE)'
-pacman -S $DE_PLASMA
+pacman -S $PLASMA
     echo '23. Создаем root пароль'
 passwd
     echo '24. Создаём пользователя'
