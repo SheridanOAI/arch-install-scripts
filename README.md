@@ -30,11 +30,11 @@
 DATA2_LOCATION=/mnt/data2
 
     В этих партициях я указываю разделы которые небходимо монтировать (скрипт arch.sh).
- BOOT_PARTITION=/dev/sda1
- SWAP_PARTITION=/dev/nvme0n1p6
- ROOT_PARTITION=/dev/sda2
- DATA_PARTITION=/dev/sda5
-DATA2_PARTITION=/dev/nvme0n1p5
+ BOOT_PARTITION=/dev/sdxx
+ SWAP_PARTITION=/dev/sdxx
+ ROOT_PARTITION=/dev/sdxx
+ DATA_PARTITION=/dev/sdxx
+DATA2_PARTITION=/dev/sdxx
 
     Делаем выбор с каким ядром произвести установку
 DEFAULT=
