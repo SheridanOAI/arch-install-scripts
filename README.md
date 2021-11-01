@@ -23,13 +23,13 @@
 3. Монтируем флешку с скриптами в #mount /dev/sdXX /1
 4. Запускаем скрипт #/1/arch.sh
 
-    В этих локациях я указываю куда подключать ваши разделы.(скрипт arch.sh)
+    В этих локациях я указываю куда подключать ваши разделы (скрипт arch.sh).
  ROOT_LOCATION=/mnt
  BOOT_LOCATION=/mnt/boot/efi
  DATA_LOCATION=/mnt/data
 DATA2_LOCATION=/mnt/data2
 
-    В этих партициях я указываю разделы которые небходимо монтировать. (скрипт arch.sh)
+    В этих партициях я указываю разделы которые небходимо монтировать (скрипт arch.sh).
  BOOT_PARTITION=/dev/sda1
  SWAP_PARTITION=/dev/nvme0n1p6
  ROOT_PARTITION=/dev/sda2
