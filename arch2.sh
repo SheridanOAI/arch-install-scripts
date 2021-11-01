@@ -10,10 +10,10 @@ AMD_ATI="xorg-server xorg-drivers"
 
     echo '(П.22 стр.49) Выбор установки рабочего стола PLASMA,CINNAMON,GNOME,XFCE,MATE'
 DE_PLASMA="plasma dolphin pavucontrol-qt packagekit-qt5"
-DE_CINNAMON="cinnamon cinnamon-translations networkmanager lightdm"
+DE_CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pavucontrol"
 DE_GNOME="gnome gnome-extra networkmanager pavucontrol"
-DE_XFCE="xfce4 xfce4-goodies networkmanager lightdm"
-DE_MATE="mate mate-extra networkmanager lightdm"
+DE_XFCE="xfce4 xfce4-goodies networkmanager lxdm pavucontrol"
+DE_MATE="mate mate-extra network-manager-applet networkmanager mate-media lxdm pavucontrol"
 
     echo '(П.24 стр.53) Имя пользователя'
 USERNAME=sheridan
@@ -21,13 +21,13 @@ USERNAME=sheridan
     echo '(П.25 стр.55) Пароль пользователя'
 USERPASS=sheridan
 
-    echo '(П.27 стр.59) Выбор экранного менеджера SDDM GDM lightdm'
-SDDM=systemctl enable sddm
-GDM=systemctl enable gdm
-LIGHTDM=systemctl enable lightdm
+    echo '(П.27 стр.59) Выбор экранного менеджера SDDM GDM LXDM'
+SDDM=sddm
+ GDM=gdm
+LXDM=lxdm
 
     echo 'Место (ДИСК) установки GRUB'
-DISK=/dev/sda
+DISK=/dev/xxx
 
     echo '15. Выставляем регион'
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -55,8 +55,8 @@ useradd -m -G users,wheel,audio,video -s /bin/bash $USERNAME
 passwd $USERPASS
     echo '26. Раскоментируем sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-    echo '27. Подключаем daemon SDDM, GDM, LIGHTDM'
-$SDDM
+    echo '27. Подключаем daemon SDDM, GDM, LXDM'
+systemctl enable $SDDM
     echo '28. Подключаем daemon NetworkManager'
 systemctl enable NetworkManager
     echo '29 Устанавливаем grub'
