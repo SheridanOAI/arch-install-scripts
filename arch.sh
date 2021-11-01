@@ -3,7 +3,7 @@
 loadkeys ru
 setfont cyr-sun16
 
-    echo '(П.10 стр.48) Выбор ядра и основных пакетов'
+    echo '(П.10 стр.51) Выбор ядра и основных пакетов'
 DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
 ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
 LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
@@ -15,17 +15,20 @@ LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcp
 DATA2_LOCATION=/mnt/data2
 
     echo 'Выбор разделов'
- BOOT_PARTITION=/dev/sda1
- SWAP_PARTITION=/dev/nvme0n1p6
- ROOT_PARTITION=/dev/sda2
- DATA_PARTITION=/dev/sda5
-DATA2_PARTITION=/dev/nvme0n1p5
+ BOOT_PARTITION=/dev/sdxx
+ SWAP_PARTITION=/dev/sdxx
+ ROOT_PARTITION=/dev/sdxx
+ DATA_PARTITION=/dev/sdxx
+DATA2_PARTITION=/dev/sdxx
+
+    echo 'Выбор FS ROOT раздела'
+ROOT_FS_TYPE=ext4
 
     echo 'Имя компьютера'
 HOSTNAME=archlinux
 
     echo '01. Форматирование корневого раздела'
-mkfs.ext4 $ROOT_PARTITION -L Arch
+mkfs.${ROOT_FS_TYPE} -f $ROOT_PARTITION -L Arch
     echo '02. Монтирование корневого раздела'
 mount $ROOT_PARTITION $ROOT_LOCATION
     echo '03. Создание папок для разделов с данными'
