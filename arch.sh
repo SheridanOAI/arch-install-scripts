@@ -22,13 +22,13 @@ DATA2_LOCATION=/mnt/data2
 DATA2_PARTITION=/dev/sdxx
 
     echo 'Выбор FS ROOT раздела'
-ROOT_FS_TYPE=ext4
+FS_TYPE=ext4
 
     echo 'Имя компьютера'
 HOSTNAME=archlinux
 
     echo '01. Форматирование корневого раздела'
-mkfs.${ROOT_FS_TYPE} -f $ROOT_PARTITION -L Arch
+mkfs.${FS_TYPE} $ROOT_PARTITION -L Arch
     echo '02. Монтирование корневого раздела'
 mount $ROOT_PARTITION $ROOT_LOCATION
     echo '03. Создание папок для разделов с данными'
