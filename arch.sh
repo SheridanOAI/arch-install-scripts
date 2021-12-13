@@ -28,7 +28,7 @@ FS_TYPE=ext4
 HOSTNAME=archlinux
 
     echo '01. Форматирование корневого раздела'
-mkfs.${FS_TYPE} $ROOT_PARTITION -L Arch
+mkfs.$FS_TYPE $ROOT_PARTITION -L Arch
     echo '02. Монтирование корневого раздела'
 mount $ROOT_PARTITION $ROOT_LOCATION
     echo '03. Создание папок для разделов с данными'
