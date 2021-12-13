@@ -12,8 +12,8 @@ AMD_ATI="xorg-server xorg-drivers"
 PLASMA="plasma dolphin pavucontrol-qt"
 CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
 GNOME="gnome gnome-extra networkmanager pavucontrol"
-XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio pavucontrol"
-MATE="mate mate-extra network-manager-applet networkmanager mate-media lxdm pulseaudio pavucontrol"
+XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio picom pavucontrol"
+MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
 
     echo '(П.24 стр.53) Вводим имя пользователя'
 USERNAME=username
