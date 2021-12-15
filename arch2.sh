@@ -1,33 +1,33 @@
  #!/bin/bash
 
-PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
+  PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
 
-    echo '(П.21 стр.47) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
+    echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
 NV_DEFAULT="nvidia nvidia-settings"
-NV_ZEN="nvidia-dkms nvidia-settings"
-NV_LTS="nvidia-lts nvidia-settings"
-AMD_ATI="xorg-server xorg-drivers"
+    NV_ZEN="nvidia-dkms nvidia-settings"
+    NV_LTS="nvidia-lts nvidia-settings"
+   AMD_ATI="xorg-server xorg-drivers"
 
-    echo '(П.22 стр.49) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE'
-PLASMA="plasma dolphin pavucontrol-qt"
-CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
-GNOME="gnome gnome-extra networkmanager pavucontrol"
-XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio picom pavucontrol"
-MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
+    echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE'
+    PLASMA="plasma dolphin pavucontrol-qt"
+  CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
+     GNOME="gnome gnome-extra networkmanager pavucontrol"
+      XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio picom pavucontrol"
+      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
 
-    echo '(П.24 стр.53) Вводим имя пользователя'
-USERNAME=username
+    echo 'Вводим имя пользователя'
+  USERNAME=user
 
-    echo '(П.25 стр.55) Вводим такое же имя пользователя для пароля'
-USERPASS=username
+    echo 'Вводим такое же имя пользователя для пароля'
+  USERPASS=user
 
-    echo '(П.27 стр.59) Выбор экранного менеджера SDDM GDM LXDM'
-SDDM=sddm
- GDM=gdm
-LXDM=lxdm
+    echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
+     SDDM=sddm
+      GDM=gdm
+     LXDM=lxdm
 
     echo 'Место (ДИСК) установки GRUB'
-DISK=/dev/xxx
+     DISK=/dev/sdx
 
     echo '15. Выставляем регион'
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -44,9 +44,33 @@ echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
     echo '20. Обновляем базу PACMAN'
 pacman -Sy
     echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
-pacman -S $NV_DEFAULT
+    echo '1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI'
+    read choice
+      if [[ "$choice" == "1" ]]; then
+DRIVERS=$NV_DEFAULT
+    elif [[ "$choice" == "2" ]]; then
+DRIVERS=$NV_ZEN
+    elif [[ "$choice" == "3" ]]; then
+DRIVERS=$NV_LTS
+    elif [[ "$choice" == "4" ]]; then
+DRIVERS=$AMD_ATI
+      fi
+pacman -S $DRIVERS
     echo '22. Устанавливаем рабочий стол (DE)'
-pacman -S $PLASMA
+    echo '1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE'
+    read choice
+      if [[ "$choice" == "1" ]]; then
+DE=$PLASMA
+    elif [[ "$choice" == "2" ]]; then
+DE=$CINNAMON
+    elif [[ "$choice" == "3" ]]; then
+DE=$GNOME
+    elif [[ "$choice" == "4" ]]; then
+DE=$XFCE
+    elif [[ "$choice" == "5" ]]; then
+DE=$MATE
+      fi
+pacman -S $DE
     echo '23. Создаем root пароль'
 passwd
     echo '24. Создаём пользователя'
@@ -56,7 +80,16 @@ passwd $USERPASS
     echo '26. Раскоментируем sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
     echo '27. Подключаем daemon SDDM, GDM, LXDM'
-systemctl enable $SDDM
+    echo '1 - PLASMA - SDDM, 2 - GNOME - GDM, 3 - CINNAMON-XFCE-MATE - LXDM'
+    read choice
+      if [[ "$choice" == "1" ]]; then
+DM=$SDDM
+    elif [[ "$choice" == "2" ]]; then
+DM=$GDM
+    elif [[ "$choice" == "3" ]]; then
+DM=$LXDM
+      fi
+systemctl enable $DM
     echo '28. Подключаем daemon NetworkManager'
 systemctl enable NetworkManager
     echo '29 Устанавливаем grub'
