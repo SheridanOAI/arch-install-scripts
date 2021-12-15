@@ -36,28 +36,32 @@ DATA2_LOCATION=/mnt/data2
  DATA_PARTITION=/dev/sdxx
 DATA2_PARTITION=/dev/sdxx
 
-    Делаем выбор с каким ядром произвести установку
-DEFAULT=
-ZEN=
-LTS=
-Свой выбор вы вносите в (П.10 стр.51 arch.sh).
+    ВЫБОР ЯДРА
 
-    Делаем выбор установки драйверов (Nvidia, AMD) в зависимости от установленного ядра в скрипте (П.10.стр.51 arch.sh),
-    для этого необходимо в (П21. стр.47 arch2.sh) внести свой выбор.
-NVIDIA_DEFAULT="nvidia"
-NVIDIA_ZEN="nvidia-dkms"
-NVIDIA_LTS="nvidia-lts"
-AMD_ATI="xorg-server xorg-drivers"
+        DEFAULT=
+            ZEN=
+            LTS=
+Для выбора ядра необходимо ввести нужную цифру во время работы скрипта (1 - DEFAULT, 2 - ZEN, 3 - LTS) (П.10 arch.sh).
 
-    Для выбора рабочего стола вам необходимо выбрать необходимое DE ($DE_PLASMA $DE_CINNAMON $DE_GNOME $DE_XFCE $DE_MATE)
-и указать в (П.22 стр.49 arch2.sh) какой рабочий стол необходимо подключить (по умолчанию KDE Plasma).
+    ВЫБОР ДРАЙВЕРОВ (Nvidia, AMD)
+зависит от выбора ядра (П.10 arch.sh),
+
+    NV_DEFAULT="nvidia"
+        NV_ZEN="nvidia-dkms"
+        NV_LTS="nvidia-lts"
+       AMD_ATI="xorg-server xorg-drivers"
+
+Для выбора драйвера необходимо ввести нужную цифру во время работы скрипта (1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI) (П21 arch2.sh).
+
+    ВЫБОР DE
+Для выбора рабочего стола (DE) необходимо ввести нужную цифру во время работы скрипта (1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE)
+    (П.22 arch2.sh).
 
     В (строке№19 arch2.sh) вводим имя пользователя
 
     В (строке№22 arch2.sh) вводим тоже имя пользователя что и в строке 19 (для пароля пользователя)
 
-    Для подключения демона экранного менеджера в (П.27стр.59) ввести необходимый.
-Дя $DE_PLASMA - $SDDM, для $DE_GNOME - $GDM, для $DE_CINNAMON,$DE_MATE,DE_XFCE - $LXDM
+    Для подключения демона экранного менеджера необходимо ввести нужную цифру во время работы скрипта (1 - PLASMA - SDDM, 2 - GNOME - GDM, 3 - CINNAMON-XFCE-MATE - LXDM) (П.27 arch2.sh).
 
 Для выбора диска куда будет установлен GRUB в (строку№30 arch2.sh) вписуем свой диск.
 
