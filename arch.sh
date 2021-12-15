@@ -3,16 +3,16 @@
 loadkeys ru
 setfont cyr-sun16
 
-    echo '(П.10 стр.51) Выбор ядра и основных пакетов'
-DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
-ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
-LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
+    echo '(П.10) Выбор ядра и основных пакетов'
+        DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
+            ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
+            LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
 
     echo 'Выбор места установки разделов (LOCATION)'
- ROOT_LOCATION=/mnt
- BOOT_LOCATION=/mnt/boot/efi
- DATA_LOCATION=/mnt/data
-DATA2_LOCATION=/mnt/data2
+  ROOT_LOCATION=/mnt
+  BOOT_LOCATION=/mnt/boot/efi
+  DATA_LOCATION=/mnt/data
+ DATA2_LOCATION=/mnt/data2
 
     echo 'Выбор разделов'
  BOOT_PARTITION=/dev/sdxx
@@ -22,10 +22,10 @@ DATA2_LOCATION=/mnt/data2
 DATA2_PARTITION=/dev/sdxx
 
     echo 'Выбор FS ROOT раздела'
-FS_TYPE=ext4
+        FS_TYPE=ext4
 
     echo 'Имя компьютера'
-HOSTNAME=archlinux
+       HOSTNAME=archlinux
 
     echo '01. Форматирование корневого раздела'
 mkfs.$FS_TYPE $ROOT_PARTITION -L Arch
@@ -48,7 +48,16 @@ cp /1/arch2.sh /mnt/arch2.sh
     echo '09. Установка зеркал'
 #pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
     echo '10. Установка ядра и основных пакетов'
-pacstrap /mnt $DEFAULT
+    echo '1 - DEFAULT, 2 - ZEN, 3 - LTS'
+    read choice
+      if [[ "$choice" == "1" ]]; then
+KERNEL=$DEFAULT
+    elif [[ "$choice" == "2" ]]; then
+KERNEL=$ZEN
+    elif [[ "$choice" == "3" ]]; then
+KERNEL=$LTS
+      fi
+pacstrap /mnt $KERNEL
     echo '11. Генерируем fstab'
 genfstab -U /mnt >> /mnt/etc/fstab
     echo '12. Имя компьютера'
