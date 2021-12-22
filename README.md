@@ -27,14 +27,14 @@
 8-(13) Вводим имя компьютера - HOSTNAME
 9-(16) Выставляем регион - /Europe/Moscow
 10-(22) Выбираем дравер в зависмости с (П.11 arch.sh) установленного ядра
-(1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI)
-11-(23) Выбираем рабочий стол - (1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE)
+(1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI - NOUVEAU)
+11-(23) Выбираем рабочий стол - (1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE, 6 - LXQT)
 12-(24) Создаём пароль ROOT
 13-(25) Вписываем имя пользователя
 14-(26) Вписываем такое же имя пользователя для пароля
 15-(27) Создаём пароль пользователя
 16-(29) Выбираем daemon оконного менеджера в зависимости от рабочего стола
-(1 - PLASMA - SDDM, 2 - GNOME - GDM, 3 - CINNAMON-XFCE-MATE - LXDM)
+(1 - SDDM - PLASMA-LXQT, 2 - GDM - GNOME, 3 - LXDM - CINNAMON-XFCE-MATE)
 17-(32) Выбор диска для установки GRUB
 
     ВЫБОР РАЗДЕЛОВ (ROOT,SWAP,EFI_BOOT,DATA,DATA2), во время работы скрипта указать свои разделы - /dev/sdxx
@@ -52,10 +52,10 @@ NV_DEFAULT="nvidia"
     NV_ZEN="nvidia-dkms"
     NV_LTS="nvidia-lts"
    AMD_ATI="xorg-server xorg-drivers"
-Для выбора драйвера необходимо ввести нужную цифру во время работы скрипта (1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI) (П21 arch2.sh).
+Для выбора драйвера необходимо ввести нужную цифру во время работы скрипта (1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI - NOUVEAU) (П21 arch2.sh).
 
     ВЫБОР РАБОЧЕГО СТОЛА (DE)
-Для выбора рабочего стола (DE) необходимо ввести нужную цифру во время работы скрипта (1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE)
+Для выбора рабочего стола (DE) необходимо ввести нужную цифру во время работы скрипта (1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE, 6 - LXQT)
     (П.23 arch2.sh).
 
     ВЫБОР ДИСКА УСТАНОВКИ GRUB
