@@ -8,34 +8,35 @@ NV_DEFAULT="nvidia nvidia-settings"
     NV_LTS="nvidia-lts nvidia-settings"
    AMD_ATI="xorg-server xorg-drivers"
 
-    echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE'
+    echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
     PLASMA="plasma dolphin pavucontrol-qt"
   CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
      GNOME="gnome gnome-extra networkmanager pavucontrol"
       XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio picom pavucontrol"
       MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
+      LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pulseaudio pavucontrol"
 
     echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
      SDDM=sddm
       GDM=gdm
      LXDM=lxdm
 
-    echo '16. Выставляем регион'
+    echo '15. Выставляем регион'
     read -p 'ZONEINFO_' ZONEINFO_
 ln -sf /usr/share/zoneinfo/$ZONEINFO_ /etc/localtime
-    echo '17. Раскоментируем локаль системы'
+    echo '16. Раскоментируем локаль системы'
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 sed -i 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
-    echo '18. Генерируем локаль системы'
+    echo '17. Генерируем локаль системы'
 locale-gen
-    echo '19. Указываем язык системы'
+    echo '18. Указываем язык системы'
 echo 'LANG="ru_RU.UTF-8"' > /etc/locale.conf
-    echo '20. Русифицируем консоль'
+    echo '19. Русифицируем консоль'
 echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
-    echo '21. Обновляем базу PACMAN'
+    echo '20. Обновляем базу PACMAN'
 pacman -Sy
-    echo '22. Устанавливаем NVIDIA AMD_ATI drivers'
+    echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
     echo '1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI'
     read choice
       if [[ "$choice" == "1" ]]; then
@@ -48,8 +49,8 @@ DRIVERS=$NV_LTS
 DRIVERS=$AMD_ATI
       fi
 pacman -S $DRIVERS
-    echo '23. Устанавливаем рабочий стол (DE)'
-    echo '1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE'
+    echo '22. Устанавливаем рабочий стол (DE)'
+    echo '1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE, 6 - LXQT'
     read choice
       if [[ "$choice" == "1" ]]; then
 DE=$PLASMA
@@ -61,21 +62,23 @@ DE=$GNOME
 DE=$XFCE
     elif [[ "$choice" == "5" ]]; then
 DE=$MATE
+    elif [[ "$choice" == "6" ]]; then
+DE=$LXQT
       fi
 pacman -S $DE
-    echo '24. Создаем root пароль'
+    echo '23. Создаем root пароль'
 passwd
-    echo '25. Создаём пользователя'
+    echo '24. Создаём пользователя'
 read -p 'USERNAME_' USERNAME_
 useradd -m -G users,wheel,audio,video -s /bin/bash $USERNAME_
-    echo '26. Вписываем такое же имя пользователя'
+    echo '25. Вписываем такое же имя пользователя'
 read -p 'USERNAME_' USERNAME_
-    echo '27. Создаём пароль пользователя'
+    echo '26. Создаём пароль пользователя'
 passwd $USERNAME_
-    echo '28. Раскоментируем sudoers'
+    echo '27. Раскоментируем sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-    echo '29. Подключаем daemon SDDM, GDM, LXDM'
-    echo '1 - PLASMA - SDDM, 2 - GNOME - GDM, 3 - CINNAMON-XFCE-MATE - LXDM'
+    echo '28. Подключаем daemon SDDM, GDM, LXDM'
+    echo '1 - SDDM - PLASMA-LXQT, 2 - GDM - GNOME, 3 - LXDM - CINNAMON-XFCE-MATE'
     read choice
       if [[ "$choice" == "1" ]]; then
 DM=$SDDM
@@ -85,16 +88,16 @@ DM=$GDM
 DM=$LXDM
       fi
 systemctl enable $DM
-    echo '30. Подключаем daemon NetworkManager'
+    echo '29. Подключаем daemon NetworkManager'
 systemctl enable NetworkManager
-    echo '31. Устанавливаем grub'
+    echo '30 Устанавливаем grub'
 pacman -S grub os-prober efibootmgr
-    echo '32. Выбор диска установки grub'
+    echo 'Выбор диска установки grub'
 read -p 'DISK_' DISK_
 grub-install $DISK_
-    echo '33. Подключение os-prober'
+    echo '31. Подключение os-prober'
 #echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
-    echo '34. Обновляем grub'
+    echo '32. Обновляем grub'
 grub-mkconfig -o /boot/grub/grub.cfg
-    echo '35. Устанавливаем программы'
+    echo '33. Устанавливаем программы'
 pacman -S $PACKAGES
