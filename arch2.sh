@@ -37,7 +37,7 @@ echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
     echo '20. Обновляем базу PACMAN'
 pacman -Sy
     echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
-    echo '1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI'
+    echo '1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI - NOUVEAU'
     read choice
       if [[ "$choice" == "1" ]]; then
 DRIVERS=$NV_DEFAULT
