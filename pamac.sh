@@ -8,3 +8,6 @@ makepkg
 sudo pacman -U yay-*.zst
 yay -S pamac-aur
 yay -S archlinux-appstream-data-pamac
+cd ..
+rm -rf yay
+rm yay.tar.gz
