@@ -1,5 +1,6 @@
  #!/bin/bash
 
+#Install Pamac-aur
 sudo pacman -S git go
 git clone https://aur.archlinux.org/yay.git
 curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/''yay''.tar.gz
