@@ -2,21 +2,21 @@
 
   PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
 
-    echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
+    #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
 NV_DEFAULT="nvidia nvidia-settings"
     NV_ZEN="nvidia-dkms nvidia-settings"
     NV_LTS="nvidia-lts nvidia-settings"
    AMD_ATI="xorg-server xorg-drivers"
 
-    echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-    PLASMA="plasma dolphin pavucontrol-qt"
+    #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
+    PLASMA="plasma dolphin konsole pavucontrol-qt"
   CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
      GNOME="gnome gnome-extra networkmanager pavucontrol"
       XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio picom pavucontrol"
-      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
       LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pulseaudio pavucontrol"
+      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
 
-    echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
+    #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
      SDDM=sddm
       GDM=gdm
      LXDM=lxdm
@@ -50,7 +50,7 @@ DRIVERS=$AMD_ATI
       fi
 pacman -S $DRIVERS
     echo '22. Устанавливаем рабочий стол (DE)'
-    echo '1 - PLASMA, 2 - CINNAMON, 3 - GNOME, 4 - XFCE, 5 - MATE, 6 - LXQT'
+    echo '1-PLASMA, 2-CINNAMON, 3-GNOME, 4-XFCE, 5-LXQT, 6-MATE'
     read choice
       if [[ "$choice" == "1" ]]; then
 DE=$PLASMA
@@ -61,9 +61,9 @@ DE=$GNOME
     elif [[ "$choice" == "4" ]]; then
 DE=$XFCE
     elif [[ "$choice" == "5" ]]; then
-DE=$MATE
-    elif [[ "$choice" == "6" ]]; then
 DE=$LXQT
+    elif [[ "$choice" == "6" ]]; then
+DE=$MATE
       fi
 pacman -S $DE
     echo '23. Создаем root пароль'
@@ -78,7 +78,7 @@ passwd $USERNAME_
     echo '27. Раскоментируем sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
     echo '28. Подключаем daemon SDDM, GDM, LXDM'
-    echo '1 - SDDM - PLASMA-LXQT, 2 - GDM - GNOME, 3 - LXDM - CINNAMON-XFCE-MATE'
+    echo '1-SDDM - PLASMA-LXQT, 2-GDM - GNOME, 3-LXDM - CINNAMON-XFCE-MATE'
     read choice
       if [[ "$choice" == "1" ]]; then
 DM=$SDDM
@@ -90,14 +90,14 @@ DM=$LXDM
 systemctl enable $DM
     echo '29. Подключаем daemon NetworkManager'
 systemctl enable NetworkManager
-    echo '30 Устанавливаем grub'
+    echo '30. Устанавливаем grub'
 pacman -S grub os-prober efibootmgr
-    echo 'Выбор диска установки grub'
+    echo '31. Выбор диска установки grub'
 read -p 'DISK_' DISK_
 grub-install $DISK_
-    echo '31. Подключение os-prober'
+    echo '32. Подключение os-prober'
 #echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
-    echo '32. Обновляем grub'
+    echo '33. Обновляем grub'
 grub-mkconfig -o /boot/grub/grub.cfg
-    echo '33. Устанавливаем программы'
+    echo '34. Устанавливаем программы'
 pacman -S $PACKAGES
