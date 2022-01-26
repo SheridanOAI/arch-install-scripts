@@ -3,10 +3,10 @@
   PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
 
     #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
-NV_DEFAULT="nvidia nvidia-settings"
-    NV_ZEN="nvidia-dkms nvidia-settings"
-    NV_LTS="nvidia-lts nvidia-settings"
-   AMD_ATI="xorg-server xorg-drivers"
+NV_DEFAULT="archlinux-keyring nvidia nvidia-settings"
+    NV_ZEN="archlinux-keyring nvidia-dkms nvidia-settings"
+    NV_LTS="archlinux-keyring nvidia-lts nvidia-settings"
+   AMD_ATI="archlinux-keyring xorg-server xorg-drivers"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
     PLASMA="plasma dolphin konsole pavucontrol-qt"
