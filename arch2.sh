@@ -1,6 +1,6 @@
  #!/bin/bash
 
-  PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious gnome-disk-utility gnome-mahjongg conky ttf-liberation ttf-dejavu"
+  PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious conky ttf-liberation ttf-dejavu"
 
     #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
 NV_DEFAULT="archlinux-keyring nvidia nvidia-settings"
@@ -9,12 +9,12 @@ NV_DEFAULT="archlinux-keyring nvidia nvidia-settings"
    AMD_ATI="archlinux-keyring xorg-server xorg-drivers"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-    PLASMA="plasma dolphin konsole pavucontrol-qt"
-  CINNAMON="cinnamon cinnamon-translations networkmanager lxdm pulseaudio pavucontrol"
+    PLASMA="plasma dolphin konsole gnome-disk-utility gnome-mahjongg pavucontrol-qt"
+  CINNAMON="cinnamon cinnamon-translations networkmanager gnome-disk-utility gnome-mahjongg lxdm pulseaudio pavucontrol"
      GNOME="gnome gnome-extra networkmanager pavucontrol"
-      XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio picom pavucontrol"
+      XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio gnome-disk-utility picom pavucontrol"
       LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pulseaudio pavucontrol"
-      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
+      #MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
 
     #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
      SDDM=sddm
@@ -50,7 +50,7 @@ DRIVERS=$AMD_ATI
       fi
 pacman -S $DRIVERS
     echo '22. Устанавливаем рабочий стол (DE)'
-    echo '1-PLASMA, 2-CINNAMON, 3-GNOME, 4-XFCE, 5-LXQT, 6-MATE'
+    echo '1-PLASMA, 2-CINNAMON, 3-GNOME, 4-XFCE, 5-LXQT'
     read choice
       if [[ "$choice" == "1" ]]; then
 DE=$PLASMA
@@ -62,8 +62,6 @@ DE=$GNOME
 DE=$XFCE
     elif [[ "$choice" == "5" ]]; then
 DE=$LXQT
-    elif [[ "$choice" == "6" ]]; then
-DE=$MATE
       fi
 pacman -S $DE
     echo '23. Создаем root пароль'
@@ -78,7 +76,7 @@ passwd $USERNAME_
     echo '27. Раскоментируем sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
     echo '28. Подключаем daemon SDDM, GDM, LXDM'
-    echo '1-SDDM - PLASMA-LXQT, 2-GDM - GNOME, 3-LXDM - CINNAMON-XFCE-MATE'
+    echo '1-SDDM - PLASMA-LXQT, 2-GDM - GNOME, 3-LXDM - CINNAMON-XFCE'
     read choice
       if [[ "$choice" == "1" ]]; then
 DM=$SDDM
