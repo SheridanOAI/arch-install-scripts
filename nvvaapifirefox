@@ -1,0 +1,22 @@
+Введите необходимые параметры в скрытые настройки firefox
+Чтобы зайти необходимо ввести в адресной строке браузера 
+
+about:config
+
+media.ffmpeg.vaapi.enabled  true
+media.rdd-ffmpeg.enabled    true
+media.av1.enabled          false
+gfx.x11=egl.force-enabled  true
+widget.dmbuf.force-enabled true
+
+для просмотра состояния драйвера в консоли
+vainfo
+
+для просмотра лога во время работы браузера
+NVD_LOG=1 firefox
+
+Для информации о том включился ли режим GPU Nvidia
+nvtop
+
+Если режим включился у вас в таблице столбец TYPE будет отображено compute, если отображено graphic значить гдето накосячили
+https://linuxmint.com.ru/viewtopic.php?t=881&p=122738#p122738
