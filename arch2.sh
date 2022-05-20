@@ -1,20 +1,20 @@
  #!/bin/bash
 
-  PACKAGES="f2fs-tools dosfstools ntfs-3g p7zip unrar ark aspell-ru firefox firefox-i18n-ru gwenview flameshot kate audacious conky ttf-liberation ttf-dejavu"
+  PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar ark gparted aspell-ru firefox firefox-i18n-ru audacious conky"
 
     #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
-NV_DEFAULT="archlinux-keyring nvidia nvidia-settings"
-    NV_ZEN="archlinux-keyring nvidia-dkms nvidia-settings"
-    NV_LTS="archlinux-keyring nvidia-lts nvidia-settings"
+NV_DEFAULT="nvidia nvidia-settings"
+    NV_ZEN="nvidia-dkms nvidia-settings"
+    NV_LTS="nvidia-lts nvidia-settings"
    AMD_ATI="archlinux-keyring xorg-server xorg-drivers"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-    PLASMA="plasma dolphin konsole gnome-disk-utility gnome-mahjongg pavucontrol-qt"
-  CINNAMON="cinnamon cinnamon-translations networkmanager gnome-disk-utility gnome-mahjongg lxdm pulseaudio pavucontrol"
-     GNOME="gnome gnome-extra networkmanager pavucontrol"
-      XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio gnome-disk-utility picom pavucontrol"
-      LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pulseaudio pavucontrol"
-      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol"
+    PLASMA="plasma dolphin konsole gnome-disk-utility kcalc gwenview flameshot kate gnome-mahjongg pavucontrol-qt"
+  CINNAMON="cinnamon cinnamon-translations networkmanager gnome-disk-utility kate konsole gnome-mahjongg lxdm pulseaudio pavucontrol-qt"
+     GNOME="gnome gnome-extra networkmanager pavucontrol-qt"
+      XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio gnome-disk-utility picom pavucontrol-qt"
+      LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pulseaudio pavucontrol-qt"
+      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol-qt"
 
     #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
      SDDM=sddm
@@ -75,9 +75,7 @@ useradd -m -G users,wheel,audio,video -s /bin/bash $USERNAME_
 read -p 'USERNAME_' USERNAME_
     echo '26. Создаём пароль пользователя'
 passwd $USERNAME_
-    echo '27. Раскоментируем sudoers'
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-    echo '28. Подключаем daemon SDDM, GDM, LXDM'
+    echo '27. Подключаем daemon SDDM, GDM, LXDM'
     echo '1-SDDM - PLASMA-LXQT, 2-GDM - GNOME, 3-LXDM - CINNAMON-XFCE-MATE'
     read choice
       if [[ "$choice" == "1" ]]; then
@@ -88,16 +86,18 @@ DM=$GDM
 DM=$LXDM
       fi
 systemctl enable $DM
-    echo '29. Подключаем daemon NetworkManager'
+    echo '28. Подключаем daemon NetworkManager'
 systemctl enable NetworkManager
-    echo '30. Устанавливаем grub'
+    echo '29. Устанавливаем grub'
 pacman -S grub os-prober efibootmgr
-    echo '31. Выбор диска установки grub'
+    echo '30. Выбор диска установки grub'
 read -p 'DISK_' DISK_
 grub-install $DISK_
-    echo '32. Подключение os-prober'
+    echo '31. Подключение os-prober'
 #echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
-    echo '33. Обновляем grub'
+    echo '32. Обновляем grub'
 grub-mkconfig -o /boot/grub/grub.cfg
-    echo '34. Устанавливаем программы'
+    echo '32. Устанавливаем программы'
 pacman -S $PACKAGES
+    echo '34. Раскоментируем sudoers'
+sed -i '82c%wheel ALL=(ALL) ALL' /etc/sudoers
