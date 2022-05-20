@@ -71,7 +71,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 read -p 'HOSTNAME_' HOSTNAME_
 echo "$HOSTNAME_" >> /mnt/etc/hostname
     echo '13. Добавляем multilib'
-echo "[multilib]" >> /mnt/etc/pacman.conf
-echo "Include = /etc/pacman.d/mirrorlist/" >> /mnt/etc/pacman.conf
+sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
     echo '14. Переход в новое окружение'
 arch-chroot /mnt /bin/bash /arch2.sh
