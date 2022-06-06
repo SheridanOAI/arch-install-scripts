@@ -1,4 +1,4 @@
-  #!/bin/bash
+#!/bin/bash
 
 loadkeys ru
 setfont cyr-sun16
@@ -50,8 +50,9 @@ mount $DATA2_PARTITION_ $DATA2_LOCATION
     echo '07. Монтирование раздела SWAP'
 read -p 'SWAP_PARTITION_' SWAP_PARTITION_
 swapon $SWAP_PARTITION_
-    echo '08. Копирование скрипта arch2.sh'
-cp /1/arch2.sh /mnt/arch2.sh
+    echo '08. Копирование и распаковка архива с github'
+wget https://github.com/SheridanOAI/arch-install-scripts/archive/refs/heads/main.zip
+unzip main.zip -d /mnt
     echo '09. Установка зеркал'
 #pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
     echo '10. Установка ядра и основных пакетов'
@@ -73,4 +74,4 @@ echo "$HOSTNAME_" >> /mnt/etc/hostname
     echo '13. Добавляем multilib'
 sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
     echo '14. Переход в новое окружение'
-arch-chroot /mnt /bin/bash /arch2.sh
+arch-chroot /mnt /bin/bash /arch-install-scripts-main/manj2.sh
