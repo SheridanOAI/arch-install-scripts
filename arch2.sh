@@ -1,6 +1,6 @@
- #!/bin/bash
+#!/bin/bash
 
-  PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar ark gparted aspell-ru firefox firefox-i18n-ru audacious conky"
+  PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky"
 
     #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
 NV_DEFAULT="nvidia nvidia-settings"
@@ -9,17 +9,17 @@ NV_DEFAULT="nvidia nvidia-settings"
    AMD_ATI="archlinux-keyring xorg-server xorg-drivers"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-    PLASMA="plasma dolphin konsole gnome-disk-utility kcalc gwenview flameshot kate gnome-mahjongg pavucontrol-qt"
-  CINNAMON="cinnamon cinnamon-translations networkmanager gnome-disk-utility kate konsole gnome-mahjongg lxdm pulseaudio pavucontrol-qt"
-     GNOME="gnome gnome-extra networkmanager pavucontrol-qt"
-      XFCE="xfce4 xfce4-goodies networkmanager lxdm pulseaudio gnome-disk-utility picom pavucontrol-qt"
-      LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pulseaudio pavucontrol-qt"
-      MATE="mate mate-extra network-manager-applet networkmanager picom mate-media lxdm pulseaudio pavucontrol-qt"
+    PLASMA="plasma dolphin konsole gnome-disk-utility kcalc ark gwenview flameshot kate gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt"
+  CINNAMON="cinnamon cinnamon-translations networkmanager file-roller gnome-disk-utility gedit konsole gnome-mahjongg lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
+     GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
+      XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager lightdm lightdm-gtk-greeter file-roller pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility picom pavucontrol"
+      LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt"
+      MATE="mate mate-extra network-manager-applet engrampa networkmanager picom mate-media lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
 
     #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
      SDDM=sddm
       GDM=gdm
-     LXDM=lxdm
+  LIGHTDM=lightdm
 
     echo '15. Выставляем регион'
     read -p 'ZONEINFO_' ZONEINFO_
@@ -76,14 +76,14 @@ read -p 'USERNAME_' USERNAME_
     echo '26. Создаём пароль пользователя'
 passwd $USERNAME_
     echo '27. Подключаем daemon SDDM, GDM, LXDM'
-    echo '1-SDDM - PLASMA-LXQT, 2-GDM - GNOME, 3-LXDM - CINNAMON-XFCE-MATE'
+    echo '1-SDDM-PLASMA-LXQT, 2-GDM-GNOME, 3-LIGHTDM-CINNAMON-XFCE-MATE'
     read choice
       if [[ "$choice" == "1" ]]; then
 DM=$SDDM
     elif [[ "$choice" == "2" ]]; then
 DM=$GDM
     elif [[ "$choice" == "3" ]]; then
-DM=$LXDM
+DM=$LIGHTDM
       fi
 systemctl enable $DM
     echo '28. Подключаем daemon NetworkManager'
@@ -101,3 +101,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman -S $PACKAGES
     echo '34. Раскоментируем sudoers'
 sed -i '82c%wheel ALL=(ALL) ALL' /etc/sudoers
+    echo '35. Удаляем распакованный ахив (arch-install-scripts-main)'
+rm -rf /arch-install-scripts-main
