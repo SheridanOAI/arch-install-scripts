@@ -2,6 +2,8 @@
 
 loadkeys ru
 setfont cyr-sun16
+pacman -Sy
+pacman -S unzip wget
 
     #echo '(П.10) Выбор ядра и основных пакетов'
         DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
@@ -74,4 +76,4 @@ echo "$HOSTNAME_" >> /mnt/etc/hostname
     echo '13. Добавляем multilib'
 sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
     echo '14. Переход в новое окружение'
-arch-chroot /mnt /bin/bash /arch-install-scripts-main/manj2.sh
+arch-chroot /mnt /bin/bash /arch-install-scripts-main/arch2.sh
