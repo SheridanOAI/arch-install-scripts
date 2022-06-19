@@ -9,7 +9,7 @@ NV_DEFAULT="nvidia nvidia-settings"
    AMD_ATI="archlinux-keyring xorg-server xorg-drivers"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-    PLASMA="plasma dolphin konsole gnome-disk-utility kcalc ark gwenview flameshot kate gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt"
+    PLASMA="plasma dolphin konsole gnome-disk-utility kcalc ark gwenview flameshot kate gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt packagekit-qt5"
   CINNAMON="cinnamon cinnamon-translations networkmanager file-roller gnome-disk-utility gedit konsole gnome-mahjongg lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
      GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
       XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager lightdm lightdm-gtk-greeter file-roller pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility picom pavucontrol"
