@@ -10,11 +10,11 @@ NV_DEFAULT="nvidia nvidia-settings"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
     PLASMA="plasma dolphin konsole gnome-disk-utility kcalc ark gwenview flameshot kate gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt packagekit-qt5"
-  CINNAMON="cinnamon cinnamon-translations networkmanager file-roller gnome-disk-utility gedit konsole gnome-mahjongg lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
+  CINNAMON="cinnamon cinnamon-translations networkmanager file-roller gnome-disk-utility gedit konsole gnome-mahjongg lightdm lightdm-gtk-greeter plank pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
      GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
-      XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager lightdm lightdm-gtk-greeter file-roller pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility picom pavucontrol"
-      LXQT="lxqt sddm breeze-icons oxygen-icons networkmanager picom pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt"
-      MATE="mate mate-extra network-manager-applet engrampa networkmanager picom mate-media lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
+      XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager lightdm lightdm-gtk-greeter plank file-roller pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility picom pavucontrol"
+      LXQT="lxqt sddm plank breeze-icons oxygen-icons networkmanager picom pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol-qt"
+      MATE="mate mate-extra network-manager-applet engrampa networkmanager picom mate-media lightdm lightdm-gtk-greeter plank pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
 
     #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
      SDDM=sddm
