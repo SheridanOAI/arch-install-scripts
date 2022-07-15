@@ -3,9 +3,9 @@
   PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky"
 
     #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
-NV_DEFAULT="nvidia nvidia-settings"
-    NV_ZEN="nvidia-dkms nvidia-settings"
-    NV_LTS="nvidia-lts nvidia-settings"
+NV_DEFAULT="nvidia nvidia-settings nvidia-utils"
+    NV_ZEN="nvidia-dkms nvidia-settings nvidia-utils"
+    NV_LTS="nvidia-lts nvidia-settings nvidia-utils"
    AMD_ATI="archlinux-keyring xorg-server xorg-drivers"
 
     #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
