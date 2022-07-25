@@ -3,12 +3,12 @@
 loadkeys ru
 setfont cyr-sun16
 pacman -Sy
-pacman -S unzip wget
+pacman -S unzip wget archlinux-keyring
 
     #echo '(П.10) Выбор ядра и основных пакетов'
-        DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd"
-            ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd"
-            LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd"
+        DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd amd-ucode"
+            ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd amd-ucode"
+            LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd amd-ucode"
 
     #echo 'Выбор места установки разделов (LOCATION)'
   ROOT_LOCATION=/mnt
