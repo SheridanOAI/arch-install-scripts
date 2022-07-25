@@ -17,7 +17,7 @@ sudo pacman -S cups cups-pdf print-manager system-config-printer
 systemctl enable cups.service
 systemctl start cups.service
 #Install PipeWire
-sudo pacman -Sy pipewire-alsa pipewire-pulse gst-plugin-pipewire neofetch glxinfo
+sudo pacman -Sy neofetch glxinfo
 #color console
 sudo sh -c 'sed -i '33cColor' /etc/pacman.conf'
 sudo cp /data/Temp/Linux/ArchLinux/Scripts/.bashrc ~/.bashrc
