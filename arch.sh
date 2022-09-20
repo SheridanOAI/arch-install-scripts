@@ -77,11 +77,11 @@ echo '1 - VANILLA, 2 - ZEN, 3 - LTS'
 read choice
 
 if [[ "$choice" == "1" ]]; then
-    KERNEL=$VANILLA
+    export KERNEL=$VANILLA
 elif [[ "$choice" == "2" ]]; then
-    KERNEL=$ZEN
+    export KERNEL=$ZEN
 elif [[ "$choice" == "3" ]]; then
-    KERNEL=$LTS
+    export KERNEL=$LTS
 fi
 
 pacstrap /mnt $KERNEL
