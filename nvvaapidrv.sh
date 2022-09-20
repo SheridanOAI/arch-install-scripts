@@ -14,7 +14,7 @@ sudo sh -c "sed -i '6cGRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 quiet nvidia-drm.m
 
 #echo '04. Добавить параметры в mkinitcpio.conf'
 sudo sh -c "sed -i '7cMODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)' /etc/mkinitcpio.conf"
-echo '05. Пересобрал initramfs'
+echo '05. Обновить initramfs'
 sudo mkinitcpio -P
 echo '06. Обновить GRUB'
-grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
