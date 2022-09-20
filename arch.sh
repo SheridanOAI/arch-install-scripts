@@ -3,10 +3,11 @@
 loadkeys ru
 setfont cyr-sun16
 pacman -Sy
-pacman -S unzip wget archlinux-keyring
+pacman -S unzip wget 
+#archlinux-keyring
 
 #echo '(П.10) Выбор ядра и основных пакетов'
-export DEFAULT="base base-devel linux linux-firmware nano netctl dhcpcd amd-ucode"
+export VANILLA="base base-devel linux linux-firmware nano netctl dhcpcd amd-ucode"
 export ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd amd-ucode"
 export LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd amd-ucode"
 
@@ -72,11 +73,11 @@ echo '09. Установка зеркал'
 #pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
 
 echo '10. Установка ядра и основных пакетов'
-echo '1 - DEFAULT, 2 - ZEN, 3 - LTS'
+echo '1 - VANILLA, 2 - ZEN, 3 - LTS'
 read choice
 
 if [[ "$choice" == "1" ]]; then
-    KERNEL=$DEFAULT
+    KERNEL=$VANILLA
 elif [[ "$choice" == "2" ]]; then
     KERNEL=$ZEN
 elif [[ "$choice" == "3" ]]; then
