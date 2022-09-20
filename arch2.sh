@@ -3,9 +3,9 @@
 export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky"
 
 #echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
-export NV_DEFAULT="nvidia nvidia-settings nvidia-utils libnvidia-utils"
-export NV_ZEN="nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils"
-export NV_LTS="nvidia-lts nvidia-settings nvidia-utils lib32-nvidia-utils"
+export NV_VANILLA="xorg-server nvidia nvidia-settings nvidia-utils lib32-nvidia-utils"
+export NV_ZEN="xorg-server nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils"
+export NV_LTS="xorg-server nvidia-lts nvidia-settings nvidia-utils lib32-nvidia-utils"
 export AMD_ATI="xorg-server xorg-drivers"
 
 #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
@@ -63,11 +63,11 @@ echo '20. Обновляем базу PACMAN'
 pacman -Sy
 
 echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
-echo '1 - NV_DEFAULT, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI - NOUVEAU'
+echo '1 - NV_VANILLA, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI - NOUVEAU'
 read choice
 
 if [[ "$choice" == "1" ]]; then
-    export DRIVERS=$NV_DEFAULT
+    export DRIVERS=$NV_VANILLA
 elif [[ "$choice" == "2" ]]; then
     export DRIVERS=$NV_ZEN
 elif [[ "$choice" == "3" ]]; then
