@@ -4,7 +4,8 @@ loadkeys ru
 setfont cyr-sun16
 pacman -Sy
 pacman -S unzip wget 
-#archlinux-keyring
+pacman-key --init
+pacman-key --populate archlinux
 
 #echo '(П.10) Выбор ядра и основных пакетов'
 export VANILLA="base base-devel linux linux-firmware nano netctl dhcpcd amd-ucode"
