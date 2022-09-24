@@ -20,7 +20,7 @@ lightdm lightdm-gtk-greeter plank pipewire pipewire-alsa pipewire-pulse \
 gst-plugin-pipewire lib32-pipewire pavucontrol"
 
 export GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa \
-pipewire-pulse gst-plugin-pipewire lib32-pipewire pavucontrol"
+pipewire-pulse pavucontrol"
 
 export XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager \
 lightdm lightdm-gtk-greeter plank file-roller pipewire pipewire-alsa \
