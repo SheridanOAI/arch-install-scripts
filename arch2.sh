@@ -1,4 +1,4 @@
-#!/usr/bin/ bash
+#!/usr/bin/bash
 
 export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky"
 
