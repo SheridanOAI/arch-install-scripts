@@ -19,6 +19,7 @@ export DATA_LOCATION=/mnt/data
 export DATA2_LOCATION=/mnt/data2
 
 echo '01. Выбор раздела ROOT (/dev/xxx)'
+
 read -p 'DEV_' DEV_
 
 echo '02. Форматирование раздела ROOT'
