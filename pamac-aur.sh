@@ -1,4 +1,4 @@
- #!/usr/bin/env bash
+#!/usr/bin/bash
 
 #Install Pamac-aur
 sudo pacman -S git go
@@ -12,13 +12,7 @@ cd ..
 rm -rf yay
 rm yay.tar.gz
 
-#Install printer Konika-Minolta-PgePro-1300w
-sudo pacman -U /data/Temp/Linux/ArchLinux/Printer/printer-driver-min12xxw-0.0.9-1-x86_64.pkg.tar.zst
-sudo pacman -S cups cups-pdf print-manager system-config-printer
-systemctl enable cups.service
-systemctl start cups.service
-
-#Install PipeWire
+#Install TOOLS
 sudo pacman -Sy neofetch glxinfo
 
 #color console
