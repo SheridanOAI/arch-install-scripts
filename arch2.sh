@@ -2,11 +2,9 @@
 
 export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky"
 
-#echo '(П.21) Выбор установки nvidia drivers c kernel ($NV_DEFAULT,$NV_ZEN,$NV_LTS),'
-export NV_VANILLA="nvidia nvidia-settings nvidia-utils lib32-nvidia-utils"
-export NV_ZEN="nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils"
-export NV_LTS="nvidia-lts nvidia-settings nvidia-utils lib32-nvidia-utils"
-export AMD_ATI="xorg-server xorg-drivers"
+#echo '(П.21) Выбор установки videocard drivers (NVIDIA,AMD)'
+export NVIDIA="nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils"
+export AMD="xorg-server xorg-drivers"
 
 #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
 export PLASMA="plasma dolphin konsole gnome-disk-utility \
@@ -62,26 +60,23 @@ echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
 echo '20. Обновляем базу PACMAN'
 pacman -Sy
 
-echo '21. Устанавливаем NVIDIA AMD_ATI drivers'
-echo '1 - NV_VANILLA, 2 - NV_ZEN, 3 - NV_LTS, 4 - AMD_ATI - NOUVEAU'
+echo '21. Устанавливаем NVIDIA AMD drivers'
+
+echo '1-NVIDIA 2-AMD, NOUVEAU'
+
 read choice
-
 if [[ "$choice" == "1" ]]; then
-    export DRIVERS=$NV_VANILLA
+    export DRIVERS=$NVIDIA
 elif [[ "$choice" == "2" ]]; then
-    export DRIVERS=$NV_ZEN
-elif [[ "$choice" == "3" ]]; then
-    export DRIVERS=$NV_LTS
-elif [[ "$choice" == "4" ]]; then
-    export DRIVERS=$AMD_ATI
+    export DRIVERS=$AMD
 fi
-
 pacman -S $DRIVERS
 
 echo '22. Устанавливаем рабочий стол (DE)'
-echo '1-PLASMA, 2-CINNAMON, 3-GNOME, 4-XFCE, 5-LXQT, 6-MATE'
-read choice
 
+echo '1-PLASMA, 2-CINNAMON, 3-GNOME, 4-XFCE, 5-LXQT, 6-MATE'
+
+read choice
 if [[ "$choice" == "1" ]]; then
     export DE=$PLASMA
 elif [[ "$choice" == "2" ]]; then
@@ -95,7 +90,6 @@ elif [[ "$choice" == "5" ]]; then
 elif [[ "$choice" == "6" ]]; then
     export DE=$MATE
 fi
-
 pacman -S $DE
 
 echo '23. Создаем root пароль'
@@ -112,9 +106,10 @@ echo '26. Создаём пароль пользователя'
 passwd $USERNAME_
 
 echo '27. Подключаем daemon SDDM, GDM, LXDM'
-echo '1-SDDM-PLASMA-LXQT, 2-GDM-GNOME, 3-LIGHTDM-CINNAMON-XFCE-MATE'
-read choice
 
+echo '1-SDDM-PLASMA-LXQT, 2-GDM-GNOME, 3-LIGHTDM-CINNAMON-XFCE-MATE'
+
+read choice
 if [[ "$choice" == "1" ]]; then
     export DM=$SDDM
 elif [[ "$choice" == "2" ]]; then
@@ -122,7 +117,6 @@ elif [[ "$choice" == "2" ]]; then
 elif [[ "$choice" == "3" ]]; then
     export DM=$LIGHTDM
 fi
-
 systemctl enable $DM
 
 echo '28. Подключаем daemon NetworkManager'
