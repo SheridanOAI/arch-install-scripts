@@ -8,7 +8,7 @@ pacman-key --init
 pacman-key --populate archlinux
 
 #echo '(П.10) Выбор ядра и основных пакетов'
-export VANILLA="base base-devel linux linux-firmware nano netctl dhcpcd amd-ucode"
+export VANILLA="base base-devel linux linux-headers linux-firmware nano netctl dhcpcd amd-ucode"
 export ZEN="base base-devel linux-zen linux-zen-headers linux-firmware nano netctl dhcpcd amd-ucode"
 export LTS="base base-devel linux-lts linux-lts-headers linux-firmware nano netctl dhcpcd amd-ucode"
 
@@ -22,9 +22,10 @@ echo '01. Выбор раздела ROOT (/dev/xxx)'
 read -p 'DEV_' DEV_
 
 echo '02. Форматирование раздела ROOT'
-echo '1 - BTRFS, 2 - EXT4'
-read choice
 
+echo '1 - BTRFS, 2 - EXT4'
+
+read choice
 if [[ "$choice" == "1" ]]; then
     mkfs.btrfs -L Arch -f $DEV_ && mount $DEV_ /mnt && \
     cd /mnt && btrfs sub cre @ && btrfs sub cre @home && \
@@ -36,9 +37,10 @@ elif [[ "$choice" == "2" ]]; then
 fi
 
 echo '03. Монтирование раздела ROOT'
-echo '1 - BTRFS, 2 - EXT4'
-read choice
 
+echo '1 - BTRFS, 2 - EXT4'
+
+read choice
 if [[ "$choice" == "1" ]]; then
     mount -o noatime,autodefrag,compress=zstd,subvol=@ $DEV_ /mnt && \
     mkdir /mnt/{home,data,data2} && mkdir -p /mnt/boot/efi && \
@@ -74,9 +76,10 @@ echo '09. Установка зеркал'
 #pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
 
 echo '10. Установка ядра и основных пакетов'
-echo '1 - VANILLA, 2 - ZEN, 3 - LTS'
-read choice
 
+echo '1 - VANILLA, 2 - ZEN, 3 - LTS'
+
+read choice
 if [[ "$choice" == "1" ]]; then
     export KERNEL=$VANILLA
 elif [[ "$choice" == "2" ]]; then
@@ -84,7 +87,6 @@ elif [[ "$choice" == "2" ]]; then
 elif [[ "$choice" == "3" ]]; then
     export KERNEL=$LTS
 fi
-
 pacstrap /mnt $KERNEL
 
 echo '11. Генерируем fstab'
