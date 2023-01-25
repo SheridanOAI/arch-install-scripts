@@ -3,7 +3,7 @@
 export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky noto-fonts-emoji"
 
 #echo '(П.21) Выбор установки videocard drivers (NVIDIA,AMD)'
-export NVIDIA="xorg-server nvidia-open-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
+export NVIDIA="xorg-server nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
 export NV_OPEN="xorg-server nvidia-open-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
 export AMD="xorg-server xorg-drivers"
 
