@@ -1,38 +1,39 @@
 #!/usr/bin/bash
 
-export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky"
+export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky noto-fonts-emoji"
 
 #echo '(П.21) Выбор установки videocard drivers (NVIDIA,AMD)'
-export NVIDIA="nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils"
+export NVIDIA="nvidia-utils nvidia-dkms nvidia-settings lib32-nvidia-utils"
+export NV_OPEN="nvidia-utils nvidia-open-dkms nvidia-settings lib32-nvidia-utils"
 export AMD="xorg-server xorg-drivers"
 
 #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
 export PLASMA="plasma dolphin konsole gnome-disk-utility \
 kcalc ark gwenview flameshot kate gnome-mahjongg pipewire \
 pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire \
-pavucontrol-qt packagekit-qt5"
+pipewire-x11-bell pavucontrol-qt packagekit-qt5"
 
 export CINNAMON="cinnamon cinnamon-translations networkmanager \
 file-roller gnome-disk-utility gedit xfce4-terminal gnome-mahjongg \
 lightdm lightdm-gtk-greeter plank pipewire pipewire-alsa pipewire-pulse \
-gst-plugin-pipewire lib32-pipewire pavucontrol"
+pipewire-x11-bell gst-plugin-pipewire lib32-pipewire pavucontrol"
 
 export GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa \
-pipewire-pulse pavucontrol"
+pipewire-pulse pipewire-x11-bell pavucontrol"
 
 export XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager \
 lightdm lightdm-gtk-greeter plank file-roller pipewire pipewire-alsa \
 pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility \
-picom pavucontrol"
+pipewire-x11-bell picom pavucontrol"
 
 export LXQT="lxqt sddm plank breeze-icons oxygen-icons networkmanager \
 picom pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-lib32-pipewire pavucontrol-qt"
+pipewire-x11-bell lib32-pipewire pavucontrol-qt"
 
 export MATE="mate mate-extra network-manager-applet engrampa \
 networkmanager picom mate-media lightdm lightdm-gtk-greeter plank \
 pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-lib32-pipewire pavucontrol"
+pipewire-x11-bell lib32-pipewire pavucontrol"
 
 #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
 export SDDM=sddm
@@ -62,12 +63,14 @@ pacman -Sy
 
 echo '21. Устанавливаем NVIDIA AMD drivers'
 
-echo '1-NVIDIA 2-AMD, NOUVEAU'
+echo '1-NVIDIA   2-NVIDIA_OPEN   3-AMD,NOUVEAU'
 
 read choice
 if [[ "$choice" == "1" ]]; then
     export DRIVERS=$NVIDIA
 elif [[ "$choice" == "2" ]]; then
+    export DRIVERS=$NV_OPEN
+elif [[ "$choice" == "3" ]]; then
     export DRIVERS=$AMD
 fi
 pacman -S $DRIVERS
