@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru audacious conky noto-fonts-emoji"
+export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru \
+audacious clementine conky telegram-desktop discord noto-fonts-emoji"
 
 #echo '(П.21) Выбор установки videocard drivers (NVIDIA,AMD)'
 export NVIDIA="xorg-server nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
@@ -8,10 +9,10 @@ export NV_OPEN="xorg-server nvidia-open-dkms nvidia-utils nvidia-settings lib32-
 export AMD="xorg-server xorg-drivers"
 
 #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-export PLASMA="plasma dolphin konsole gnome-disk-utility \
-kcalc ark gwenview flameshot kate gnome-mahjongg pipewire \
-pipewire-alsa pipewire-pulse gst-plugin-pipewire lib32-pipewire \
-pipewire-x11-bell pavucontrol-qt packagekit-qt5"
+export PLASMA="plasma xorg-xwayland plasma-wayland-session dolphin \
+konsole spectacle gnome-disk-utility kcalc ark gwenview flameshot kate \
+gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
+lib32-pipewire pipewire-x11-bell pavucontrol-qt packagekit-qt5"
 
 export CINNAMON="cinnamon cinnamon-translations networkmanager \
 file-roller gnome-disk-utility gedit xfce4-terminal gnome-mahjongg \
