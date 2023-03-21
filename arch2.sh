@@ -12,29 +12,29 @@ export AMD="xorg-server xorg-drivers"
 export PLASMA="plasma xorg-xwayland plasma-wayland-session dolphin \
 konsole spectacle gnome-disk-utility kcalc ark gwenview flameshot kate \
 gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-lib32-pipewire pipewire-x11-bell pavucontrol-qt packagekit-qt5"
+lib32-pipewire pipewire-x11-bell pavucontrol-qt packagekit-qt5 bluez-utils"
 
 export CINNAMON="cinnamon cinnamon-translations networkmanager \
 file-roller gnome-disk-utility gedit xfce4-terminal gnome-mahjongg \
 lightdm lightdm-gtk-greeter plank pipewire pipewire-alsa pipewire-pulse \
-pipewire-x11-bell gst-plugin-pipewire lib32-pipewire pavucontrol"
+pipewire-x11-bell gst-plugin-pipewire lib32-pipewire pavucontrol bluez-utils"
 
 export GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa \
-pipewire-pulse pipewire-x11-bell pavucontrol"
+pipewire-pulse pipewire-x11-bell pavucontrol bluez-utils"
 
 export XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager \
 lightdm lightdm-gtk-greeter plank file-roller pipewire pipewire-alsa \
 pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility \
-pipewire-x11-bell picom pavucontrol"
+pipewire-x11-bell picom pavucontrol bluez-utils"
 
 export LXQT="lxqt sddm plank breeze-icons oxygen-icons networkmanager \
 picom pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-pipewire-x11-bell lib32-pipewire pavucontrol-qt"
+pipewire-x11-bell lib32-pipewire pavucontrol-qt bluez-utils"
 
 export MATE="mate mate-extra network-manager-applet engrampa \
 networkmanager picom mate-media lightdm lightdm-gtk-greeter plank \
 pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-pipewire-x11-bell lib32-pipewire pavucontrol"
+pipewire-x11-bell lib32-pipewire pavucontrol bluez-utils"
 
 #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
 export SDDM=sddm
