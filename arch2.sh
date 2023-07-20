@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru \
-audacious clementine conky telegram-desktop discord noto-fonts-emoji qbittorrent"
+audacious conky telegram-desktop discord noto-fonts-emoji qbittorrent"
 
 #echo '(П.21) Выбор установки videocard drivers (NVIDIA,AMD)'
 export NVIDIA="xorg-server nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
