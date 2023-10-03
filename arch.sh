@@ -44,12 +44,12 @@ echo '1 - BTRFS, 2 - EXT4'
 
 read choice
 if [[ "$choice" == "1" ]]; then
-    mount -o noatime,autodefrag,compress=zstd,subvol=@ $DEV_ /mnt && \
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@ $DEV_ /mnt && \
     mkdir -p /mnt/home/{data,data2,games} && mkdir -p /mnt/boot/efi && \
     mkdir -p /mnt/var/log && mkdir -p /mnt/var/cache && \
-    mount -o noatime,autodefrag,compress=zstd,subvol=@home $DEV_ /mnt/home && \
-    mount -o noatime,autodefrag,compress=zstd,subvol=@cache $DEV_ /mnt/var/cache && \
-    mount -o noatime,autodefrag,compress=zstd,subvol=@log $DEV_ /mnt/var/log
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@home $DEV_ /mnt/home && \
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@cache $DEV_ /mnt/var/cache && \
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@log $DEV_ /mnt/var/log
 elif [[ "$choice" == "2" ]]; then
     mount $DEV_ /mnt
 fi
