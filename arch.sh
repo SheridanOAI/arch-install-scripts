@@ -29,12 +29,12 @@ echo '1 - BTRFS, 2 - EXT4'
 
 read choice
 if [[ "$choice" == "1" ]]; then
-    mkfs.btrfs -L Arch -f $DEV_ && mount $DEV_ /mnt && \
-    cd /mnt && btrfs sub cre @ && btrfs sub cre @home && \
+    mkfs.btrfs -L Arch -f $DEV_ && mount $DEV_ /mnt &&
+    cd /mnt && btrfs sub cre @ && btrfs sub cre @home &&
     btrfs sub cre @cache && btrfs sub cre @log && cd / && umount /mnt
 elif [[ "$choice" == "2" ]]; then
-    mkfs.ext4 -L Arch $DEV_ && mount $DEV_ /mnt && \
-    mkdir -p /mnt/home/{data,data2,games} && mkdir -p /mnt/boot/efi && \
+    mkfs.ext4 -L Arch $DEV_ && mount $DEV_ /mnt &&
+    mkdir -p /mnt/home/{data,data2,games} && mkdir -p /mnt/boot/efi &&
     cd / && umount /mnt
 fi
 
@@ -44,11 +44,12 @@ echo '1 - BTRFS, 2 - EXT4'
 
 read choice
 if [[ "$choice" == "1" ]]; then
-    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@ $DEV_ /mnt && \
-    mkdir -p /mnt/home/{data,data2,games} && mkdir -p /mnt/boot/efi && \
-    mkdir -p /mnt/var/log && mkdir -p /mnt/var/cache && \
-    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@home $DEV_ /mnt/home && \
-    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@cache $DEV_ /mnt/var/cache && \
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@ $DEV_ /mnt &&
+    mkdir -p /mnt/home && mkdir -p /mnt/boot/efi &&
+    mkdir -p /mnt/var/log && mkdir -p /mnt/var/cache &&
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@home $DEV_ /mnt/home &&
+    mkdir -p /mnt/home/{data,data2,games} &&
+    mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@cache $DEV_ /mnt/var/cache &&
     mount -o rw,noatime,ssd,discard=async,compress=zstd,subvol=@log $DEV_ /mnt/var/log
 elif [[ "$choice" == "2" ]]; then
     mount $DEV_ /mnt
@@ -67,7 +68,7 @@ read -p 'DATA2_PARTITION_' DATA2_PARTITION_
 mount $DATA2_PARTITION_ $DATA2_LOCATION
 
 echo '07. Монтирование раздела GAMES'
-read -p 'DATA2_PARTITION_' DATA2_PARTITION_
+read -p 'GAMES_PARTITION_' GAMES_PARTITION_
 mount $GAMES_PARTITION_ $GAMES_LOCATION
 
 echo '08. Монтирование раздела SWAP'
@@ -79,7 +80,7 @@ wget https://github.com/SheridanOAI/arch-install-scripts/archive/refs/heads/main
 unzip main.zip -d /mnt
 
 echo '10. Установка зеркал'
-#pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
+pacman -Sy reflector && reflector --verbose -l 5 -p sort rate --save /etc/pacman.d/mirrorlist
 
 echo '11. Установка ядра и основных пакетов'
 
