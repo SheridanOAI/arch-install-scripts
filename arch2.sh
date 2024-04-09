@@ -9,10 +9,9 @@ export NV_OPEN="xorg-server nvidia-open-dkms nvidia-utils nvidia-settings lib32-
 export AMD="xorg-server xorg-drivers --noconfirm"
 
 #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-export PLASMA="plasma xorg-xwayland plasma-wayland-session dolphin konsole spectacle \
-gnome-disk-utility kcalc ark gwenview spectacle kate gnome-mahjongg \
-pipewire pipewire-alsa gst-plugin-pipewire lib32-pipewire pipewire-x11-bell \
-pavucontrol-qt bluez-utils --noconfirm"
+export PLASMA="plasma dolphin konsole spectacle gnome-disk-utility kcalc ark \
+gwenview spectacle kate gnome-mahjongg pipewire pipewire-alsa gst-plugin-pipewire \
+lib32-pipewire pipewire-x11-bell pavucontrol-qt bluez-utils --noconfirm"
 
 export CINNAMON="cinnamon cinnamon-translations networkmanager \
 file-roller gnome-disk-utility gedit xfce4-terminal gnome-mahjongg \
