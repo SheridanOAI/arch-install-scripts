@@ -1,18 +1,18 @@
 #!/usr/bin/bash
 
 export PACKAGES="f2fs-tools mtools ntfs-3g p7zip unrar gparted aspell-ru firefox firefox-i18n-ru \
-audacious conky telegram-desktop discord noto-fonts-emoji qbittorrent"
+audacious conky telegram-desktop discord noto-fonts-emoji qbittorrent --noconfirm"
 
 #echo '(П.21) Выбор установки videocard drivers (NVIDIA,AMD)'
-export NVIDIA="xorg-server nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
-export NV_OPEN="xorg-server nvidia-open-dkms nvidia-utils nvidia-settings lib32-nvidia-utils"
-export AMD="xorg-server xorg-drivers"
+export NVIDIA="xorg-server nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils --noconfirm"
+export NV_OPEN="xorg-server nvidia-open-dkms nvidia-utils nvidia-settings lib32-nvidia-utils --noconfirm"
+export AMD="xorg-server xorg-drivers --noconfirm"
 
 #echo '(П.22) Выбор установки рабочего стола $PLASMA, $CINNAMON, $GNOME, $XFCE, $MATE, $LXQT'
-export PLASMA="plasma xorg-xwayland plasma-wayland-session dolphin \
-konsole spectacle gnome-disk-utility kcalc ark gwenview flameshot kate \
-gnome-mahjongg pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-lib32-pipewire pipewire-x11-bell pavucontrol-qt packagekit-qt5 bluez-utils"
+export PLASMA="plasma xorg-xwayland plasma-wayland-session dolphin konsole spectacle \
+gnome-disk-utility kcalc ark gwenview spectacle kate gnome-mahjongg \
+pipewire pipewire-alsa gst-plugin-pipewire lib32-pipewire pipewire-x11-bell \
+pavucontrol-qt bluez-utils --noconfirm"
 
 export CINNAMON="cinnamon cinnamon-translations networkmanager \
 file-roller gnome-disk-utility gedit xfce4-terminal gnome-mahjongg \
@@ -101,7 +101,7 @@ passwd
 
 echo '25. Создаём пользователя'
 read -p 'USERNAME_' USERNAME_
-useradd -m -G users,wheel,audio,video -s /bin/bash $USERNAME_
+useradd -m -G users,wheel,video -s /bin/bash $USERNAME_
 
 echo '26. Вписываем такое же имя пользователя'
 read -p 'USERNAME_' USERNAME_
@@ -130,8 +130,8 @@ echo '30. Устанавливаем grub'
 pacman -S grub os-prober efibootmgr
 
 echo '31. Выбор диска установки grub'
-read -p 'DISK_' DISK_
-grub-install $DISK_
+#read -p 'DISK_' DISK_
+grub-install #$DISK_
 
 echo '32. Подключение os-prober'
 
