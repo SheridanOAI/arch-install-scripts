@@ -16,24 +16,24 @@ lib32-pipewire pipewire-x11-bell pavucontrol-qt bluez-utils --noconfirm"
 export CINNAMON="cinnamon cinnamon-translations networkmanager \
 file-roller gnome-disk-utility gedit xfce4-terminal gnome-mahjongg \
 lightdm lightdm-gtk-greeter plank pipewire pipewire-alsa pipewire-pulse \
-pipewire-x11-bell gst-plugin-pipewire lib32-pipewire pavucontrol bluez-utils"
+pipewire-x11-bell gst-plugin-pipewire lib32-pipewire pavucontrol bluez-utils --noconfirm"
 
 export GNOME="gnome gnome-extra networkmanager pipewire pipewire-alsa \
-pipewire-pulse pipewire-x11-bell pavucontrol bluez-utils"
+pipewire-pulse pipewire-x11-bell pavucontrol bluez-utils --noconfirm"
 
 export XFCE="xfce4 xfce4-goodies network-manager-applet networkmanager \
 lightdm lightdm-gtk-greeter plank file-roller pipewire pipewire-alsa \
 pipewire-pulse gst-plugin-pipewire lib32-pipewire gnome-disk-utility \
-pipewire-x11-bell picom pavucontrol bluez-utils"
+pipewire-x11-bell picom pavucontrol bluez-utils --noconfirm"
 
 export LXQT="lxqt sddm plank breeze-icons oxygen-icons networkmanager \
 picom pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-pipewire-x11-bell lib32-pipewire pavucontrol-qt bluez-utils"
+pipewire-x11-bell lib32-pipewire pavucontrol-qt bluez-utils --noconfirm"
 
 export MATE="mate mate-extra network-manager-applet engrampa \
 networkmanager picom mate-media lightdm lightdm-gtk-greeter plank \
 pipewire pipewire-alsa pipewire-pulse gst-plugin-pipewire \
-pipewire-x11-bell lib32-pipewire pavucontrol bluez-utils"
+pipewire-x11-bell lib32-pipewire pavucontrol bluez-utils --noconfirm"
 
 #echo '(П.27) Выбор экранного менеджера SDDM GDM LXDM'
 export SDDM=sddm
@@ -134,7 +134,7 @@ grub-install #$DISK_
 
 echo '32. Подключение os-prober'
 
-#echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 echo '33. Обновляем grub'
 grub-mkconfig -o /boot/grub/grub.cfg
 
